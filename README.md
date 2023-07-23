@@ -2,7 +2,7 @@
 This project is a PHP API server built over Slim Framework 4, PHP 8.2 and PostgreSQL 15.3.
 
 ## Folder Structure
-I used https://github.com/slimphp/Slim-Skeleton skeleton so folder structure tries to use Clean Architecture principles with PSR7 standard and PHP-DI dependency injection.
+I used https://github.com/slimphp/Slim-Skeleton skeleton so folder structure tries to follow Clean Architecture principles with PSR7 standard and PHP-DI dependency injection.
 
 Importan files/folders are marked with `**`
 
