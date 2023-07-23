@@ -1,42 +1,34 @@
-# Slim Framework 4 Skeleton Application
+# NRS-USA-POPULATION-API
+This project is a PHP API server built over Slim Framework 4, PHP 8.2 and PostgreSQL 15.3.
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+## Folder Structure
+I used https://github.com/slimphp/Slim-Skeleton skeleton so folder structure tries to use Clean Architecture principles with PSR7 standard and PHP-DI dependency injection.
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
+Importan files/folders are marked with `**`
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
-
-## Install the Application
-
-Run this command from the directory in which you want to install your new Slim Framework application. You will require PHP 7.4 or newer.
-
-```bash
-composer create-project slim/slim-skeleton [my-app-name]
+```
+├── app**                   # Configuration files
+├── docker**                # Dockerfiles, configuration files and database volume
+├── sql**                   # Database configuration/seeding files (INCLUDES BASH SCRIPT TO SEED DATABASE)
+├── docs                    # Documentation files
+├── logs                    # Log files
+├── public                  # Web server files
+├── src                     # PHP source code (The App namespace)
+│   ├── Aplication          # Network Layer
+|   |       ├── Actions**   # Controllers
+│   ├── Domain**            # The business logic
+│   ├── InfraStructure
+            ├── Persistence**  # Data Layer
+├── composer.json           # Project dependencies
+└── README.md               # This file
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writable.
-
-To run the application in development, you can run these commands 
-
-```bash
-cd [my-app-name]
-composer start
-```
-
-Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
-```bash
-cd [my-app-name]
-docker-compose up -d
-```
-After that, open `http://localhost:8080` in your browser.
-
-Run this command in the application directory to run the test suite
-
-```bash
-composer test
-```
-
-That's it! Now go build something cool.
+## Steps to run the application
+1. [Install Docker](https://docs.docker.com/desktop/?_gl=1*5wfq8t*_ga*MTQ2MjM3MDMwNC4xNjkwMDAyOTUy*_ga_XJWPQMJYHQ*MTY5MDA3NjM2Mi4yLjEuMTY5MDA3NjM2Ni41Ni4wLjA.) if you don't have it.
+2. Install php and composer if you don't have it
+3. Install [pSQL client](https://www.postgresql.org/download/) to be able to run psql command
+4. Run composer install in the root folder of this project
+5. Run docker-compose up -d --build to start containers
+6. cd into `sql/` dir using a bash compatible shell (Gitbash recommended for windows)
+7. Run `bash database-script.sh` to create tables and seed the database
+8. All ready, project's curl commands could be found at `docs/` directory.
